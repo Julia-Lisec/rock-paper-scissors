@@ -1,5 +1,5 @@
-const userScore = 0;
-const computerScore = 0;
+let userScore = 0;
+let computerScore = 0;
 
 // caching the dom
 const userScore_span = document.getElementById("user-score");
@@ -16,9 +16,40 @@ function getComputerChoice() {
   return choices[randomNumber];
 }
 
+function win() {
+  userScore++;
+  console.log("win");
+  userScore_span.innerHTML = userScore;
+  computerScore_span.innerHTML = computerScore;
+}
+
+function lose() {
+
+}
+
+function draw() {
+  console.log("draw.");
+}
+
 function game(userChoice) {
   const computerChoice = getComputerChoice();
-  console.log(computerChoice);
+  switch (userChoice + computerChoice) {
+    case "rs":
+    case "pr":
+    case "sp":
+      win();
+      break;
+    case "rp":
+    case "ps":
+    case "sr":
+      lose();
+      break;
+    case "rr":
+    case "pp":
+    case "ss":
+      draw();
+      break;
+  }
 }
 
 function main() {
